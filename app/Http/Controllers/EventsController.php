@@ -46,6 +46,7 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $event = new Event;
+        
         if($file = $request->file('cover_image')){
           $name = time().'.'.$file->getClientOriginalExtension();
           $tip = explode('/', $file->getMimeType());

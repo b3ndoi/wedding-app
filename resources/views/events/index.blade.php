@@ -33,7 +33,7 @@
                                 <td><a href="{{route('events.show',$event->id)}}" class="btn btn-default">Vidi</a></td>
                                 <td><a href="{{route('events.edit',$event->id)}}" class="btn btn-primary">Izmeni</a></td>
                                 {{-- <td><button class="btn btn-danger" onClick="deleteEvent({{$event->id}})">Obriši</button></td> --}}
-                                <td><a href="{{route('tests.show',$event->id)}}" class="btn btn-success">Testiraj ankete</a></td>
+                                <td><a href="{{route('tests.create',$event->id)}}" class="btn btn-success">Testiraj ankete</a></td>
                             </tr>
                             @endforeach
                         </tbody>

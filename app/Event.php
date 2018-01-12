@@ -16,4 +16,8 @@ class Event extends Model
     public function questions(){
         return Event::hasMany('App\Question', 'event_id');
     }
+
+    public function guests(){
+      return $this->hasMany('App\Guest', 'event_id');
+    }
 }

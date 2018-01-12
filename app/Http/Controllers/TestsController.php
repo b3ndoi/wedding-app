@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
+use App\Guest;
 use App\Question;
 
 class TestsController extends Controller
@@ -25,10 +26,37 @@ class TestsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        return view('tests.create', ['event_id'=>$id]);
     }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function save_guest(Request $request)
+    {
+        $input = $request->all();
+
+        $guest = Guest::create($input);
+
+        return redirect('tests/questions/'.$guest->id);
+
+    }
+
+    public function save_answers(Request $request, $id)
+    {
+        return $input = $request->all();
+
+        $guest = Guest::find($id)->answers()->attach($request->id_odgovora);
+
+        return redirect('tests/questions/'.$guest->id);
+
+    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -38,7 +66,7 @@ class TestsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
@@ -49,9 +77,10 @@ class TestsController extends Controller
      */
     public function show($id)
     {
-      $event = Event::findOrFail($id);
+      $guest = Guest::findOrFail($id);
+      $event = Event::findOrFail($guest->event->id);
       $questions = Question::where('event_id',$event->id)->where('status', '1')->get();
-      return view('tests.show', compact('event', 'questions'));
+      return view('tests.show', compact('guest', 'event', 'questions'));
     }
 
     /**

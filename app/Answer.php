@@ -12,4 +12,8 @@ class Answer extends Model
     public function question(){
         return Answer::belongsTo('App\Question');
     }
+
+    public function ispitanici(){
+        return $this->belongsToMany('App\Guest', 'guests_answers', 'answer_id', 'guest_id');
+    }
 }
