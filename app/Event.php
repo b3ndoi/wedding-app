@@ -8,7 +8,11 @@ class Event extends Model
 {
     protected $table = 'events';
     protected $fillable = ['user_id', 'name', 'name_of_groom', 'name_of_bride', 'location', 'date', 'cover_image'];
-
+    protected $dates = [
+        'created_at',
+        'updated_at',
+        'date'
+    ];
     public function user(){
         return Event::belongsTo('App\User');
     }

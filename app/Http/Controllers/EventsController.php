@@ -1,6 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use Illuminate\Support\Facades\Auth;
+
 use App\Event;
 
 use Illuminate\Http\Request;
@@ -23,7 +26,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::all();
+        $events = Event::where('user_id', Auth::user()->id)->get();
         return view('events.index', compact('events'));
     }
 
@@ -53,7 +56,7 @@ class EventsController extends Controller
           $file->move('vencanja/'.date("Y").'/'.date("m").'/'.date("d").'/'.$tip[0], $name);
           $event->cover_image = 'vencanja/'.date("Y").'/'.date("m").'/'.date("d").'/'.$tip[0].'/'.$name;
         }
-        $event->user_id =$request->user_id;
+        $event->user_id = Auth::user()->id;
         $event->name =$request->name;
         $event->name_of_groom = $request->name_of_groom;
         $event->name_of_bride =$request->name_of_bride;

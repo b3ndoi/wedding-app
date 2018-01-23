@@ -21,6 +21,7 @@ class NewEvents extends Migration
             $table->string('name_of_bride');
             $table->string('location');
             $table->date('date');
+            $table->string('cover_image')->nullable();
             $table->timestamps();
         });
     }

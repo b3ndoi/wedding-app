@@ -16,4 +16,8 @@ class Guest extends Model
     public function answers(){
       return $this->belongsToMany('App\Answer', 'guests_answers', 'guest_id', 'answer_id');
     }
+
+    public function media(){
+      return $this->hasMany('App\GuestMedia', 'guest_id');
+    }
 }

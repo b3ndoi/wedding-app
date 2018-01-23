@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddQuestionStatus extends Migration
+class CreateGuestMedia extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class AddQuestionStatus extends Migration
      */
     public function up()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            $table->boolean('status');
+        Schema::create('guest_media', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('guest_id')->unsigned();
+            $table->string('type');
+            $table->string('path');
+            $table->timestamps();
         });
     }
 
@@ -25,8 +29,6 @@ class AddQuestionStatus extends Migration
      */
     public function down()
     {
-        Schema::table('questions', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('guest_media');
     }
 }

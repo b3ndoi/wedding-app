@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Novo pitanje</div>
                 <div class="panel-body">
-                    {!!Form::open(['method'=>'post','action' => 'QuestionsController@store'])!!}
+                    {!!Form::open(['method'=>'POST','action' => 'QuestionsController@store'])!!}
                     {!!Form::hidden('event_id',$event_id)!!}
                     {!!Form::label('question')!!}
                     {!!Form::text('question',null, ['class' => 'form-control'])!!}

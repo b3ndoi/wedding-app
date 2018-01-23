@@ -8,8 +8,8 @@
                 <div class="panel-heading">{{$event->name}}</div>
 
                 <div class="panel-body">
-                  <form class="" action="{{route('tests.save_answers', $guest->id)}}" method="post">
-                    {{ csrf_field() }}
+                  
+                  {!!Form::open(['method'=>'post','action' => ['TestsController@save_answers',$guest->id], 'files' => true])!!}
                     @foreach ($questions as $question)
                       @if ($question->qtype->name == 'Radio button')
                         <div class="row">
@@ -17,7 +17,7 @@
                             <h4>{{$question->question}}</h4>
                             @foreach ($question->answers as $answer)
                               <div class="radio">
-                                  <label><input type="radio" name="answers_for_{{$question->id}}" value="{{$answer->id}}">{{$answer->name}}</label>
+                                  <label><input type="radio" name="radio_{{$question->id}}" value="{{$answer->id}}">{{$answer->name}}</label>
                               </div>
                             @endforeach
                           </div>
@@ -29,7 +29,7 @@
                             <h4>{{$question->question}}</h4>
                             @foreach ($question->answers as $answer)
                               <div class="checkbox">
-                                  <label><input type="checkbox" name="answers_for_{{$question->id}}" value="{{$answer->id}}">{{$answer->name}}</label>
+                                  <label><input type="checkbox" name="check_{{$question->id}}[]" value="{{$answer->id}}">{{$answer->name}}</label>
                               </div>
                             @endforeach
                           </div>
@@ -39,15 +39,23 @@
                         <div class="row">
                           <div class="col-lg-12">
                             <h4>{{$question->question}}</h4>
-                            <input type="file" name="answers_for_{{$question->id}}" value="">
+                            <input type="file" name="image_{{$question->id}}" value="">
                           </div>
                         </div>
                       @endif
+                      @if ($question->qtype->name == 'Video snimak')
+                      <div class="row">
+                        <div class="col-lg-12">
+                          <h4>{{$question->question}}</h4>
+                          <input type="file" name="video_{{$question->id}}" value="">
+                        </div>
+                      </div>
+                    @endif
                       @if ($question->qtype->name == 'Teskt')
                         <div class="row">
                           <div class="col-lg-12">
                             <h4>{{$question->question}}</h4>
-                            <textarea name="" id="" cols="30" rows="10"></textarea>
+                            <textarea name="text_{{$question->id}}" id="" cols="30" rows="10" class="form-control"></textarea>
                           </div>
                         </div>
                       @endif
@@ -58,7 +66,7 @@
                         <input type="submit" value="Potvrdi anketu" class="btn btn-success btn-block">
                       </div>
                     </div>
-                  </form>
+                  {!!Form::close()!!}
                 </div>
             </div>
         </div>

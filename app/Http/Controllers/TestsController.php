@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Guest;
+use App\GuestMedia;
 use App\Question;
 
 class TestsController extends Controller
@@ -49,11 +50,40 @@ class TestsController extends Controller
 
     public function save_answers(Request $request, $id)
     {
-        return $input = $request->all();
+        $inputs = $request->all();
+        unset($inputs['_token']);
+        foreach($inputs as $key => $single){
+            $single_array = explode('_', $key);
+            $type = $single_array[0];
+            $single_id = $single_array[1];
+            if($type == 'video'){
+                $new_video = new GuestMedia;
+                $new_video->guest_id = $id;
+                $new_video->type = $type;
+                $new_video->path = $single->store('events/videos');
+                $new_video->save();
+            }
+            if($type == 'image'){
+                $new_image = new GuestMedia;
+                $new_image->guest_id = $id;
+                $new_image->type = $type;
+                $new_image->path = $single->store('events/images');
+                $new_image->save();
+            }
+            if($type == 'text'){
 
-        $guest = Guest::find($id)->answers()->attach($request->id_odgovora);
+            }
+            if($type == 'radio'){
 
-        return redirect('tests/questions/'.$guest->id);
+            }
+            if($type == 'check'){
+
+            }
+        }
+        return 'Valjda radi ovo cudo';
+        // $guest = Guest::find($id)->answers()->attach($request->id_odgovora);
+
+        // return redirect('tests/questions/'.$guest->id);
 
     }
 

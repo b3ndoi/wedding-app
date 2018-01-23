@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCoverImage extends Migration
+class CreateGuestAnswers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddCoverImage extends Migration
      */
     public function up()
     {
-        Schema::table('events', function (Blueprint $table) {
-            $table->string('cover_image')->nullable();
+        Schema::create('guest_answers', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('guest_id')->unsigned();
+            $table->integer('answer_id')->unsigned();
+            $table->timestamps();
         });
     }
 
@@ -25,8 +28,6 @@ class AddCoverImage extends Migration
      */
     public function down()
     {
-        Schema::table('events', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('guest_answers');
     }
 }

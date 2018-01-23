@@ -29,8 +29,8 @@
                                 <td>{{$event->name_of_groom}}</td>
                                 <td>{{$event->name_of_bride}}</td>
                                 <td>{{$event->location}}</td>
-                                <td>{{$event->date}}</td>
-                                <td><a href="{{route('events.show',$event->id)}}" class="btn btn-default">Vidi</a></td>
+                                <td>{{$event->date->format('d.m.Y.')}}</td>
+                                <td><a href="{{route('events.show',$event->id)}}" class="btn btn-default">Dodaj ankete</a></td>
                                 <td><a href="{{route('events.edit',$event->id)}}" class="btn btn-primary">Izmeni</a></td>
                                 {{-- <td><button class="btn btn-danger" onClick="deleteEvent({{$event->id}})">Obriši</button></td> --}}
                                 <td><a href="{{route('tests.create',$event->id)}}" class="btn btn-success">Testiraj ankete</a></td>

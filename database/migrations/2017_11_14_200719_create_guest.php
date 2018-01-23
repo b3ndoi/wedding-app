@@ -15,6 +15,8 @@ class CreateGuest extends Migration
     {
         Schema::create('guests', function (Blueprint $table) {
             $table->increments('id')->unsigned();
+            $table->string('name', 30);
+            $table->integer('event_id')->unsigned();
             $table->timestamps();
         });
     }

@@ -18,6 +18,7 @@ class NewQuestion extends Migration
             $table->integer('event_id');
             $table->integer('qtype_id');
             $table->string('question');
+            $table->boolean('status');
             $table->timestamps();
         });
     }

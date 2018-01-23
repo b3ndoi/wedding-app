@@ -8,11 +8,18 @@
                 <div class="panel-heading">{{$event->name}}</div>
 
                 <div class="panel-body">
-
+                        @foreach($event->guests as $guest)
+                        {{$guest->name}}
+                            @foreach($guest->media as $media)
+                                
+                                    <img src="{{Storage::url('public/'.$media->path)}}" class="img-responsive col-lg-3" alt="">
+                                
+                            @endforeach
+                        @endforeach
                     <a class="btn btn-primary" href="{{route('questions.create', ['event_id' => $event->id])}}">Novo pitanje</a>
                     {!!Form::open(['action'=>['EventsController@destroy', $event->id],'method'=>'DELETE'])!!}
 
-                    {!!Form::submit('Obriši',["class"=>"btn btn-danger"])!!}
+                    {!!Form::submit('Obriši',["class"=>"btn btn-danger pull-right"])!!}
 
                     {!!Form::close()!!}
                     <table class="table">
@@ -32,14 +39,16 @@
                                 <td> {{$question->question}}</td>
                                 <td>{{$question->qtype->name}}</td>
                                 <td>
-                                  @if ($question->qtype->name !='Image')
+                                  @if ($question->qtype->name == 'Checkbox button' || $question->qtype->name == 'Radio button' )
                                     {{$question->answers()->count()}}
+                                  @else
+                                    Nema
                                   @endif
                                 </td>
                                 <td>{!!$question->status=='0'?"<span class='alert-danger'>Neaktivna</span>":"<span class='alert-success'>Aktivna</span>"!!}</td>
                                 <td><a href="{{route('questions.edit',[$question->id])}}" class="btn btn-default">Izmeni</a></td>
                                 <td>
-                                  @if ($question->qtype->name !='Image')
+                                  @if ($question->qtype->name == 'Checkbox button' || $question->qtype->name == 'Radio button' )
                                     <a href="{{route('answers.create',['question_id'=>$question->id])}}" class="btn btn-primary">Dodaj odgovore</a>
                                   @endif
                                 </td>
