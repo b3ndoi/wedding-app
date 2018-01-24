@@ -60,14 +60,17 @@ class TestsController extends Controller
                 $new_video = new GuestMedia;
                 $new_video->guest_id = $id;
                 $new_video->type = $type;
-                $new_video->path = $single->store('events/videos');
+                $path = substr($single->store('public/events/videos'), 7);
+
+                $new_video->path = $path;
                 $new_video->save();
             }
             if($type == 'image'){
                 $new_image = new GuestMedia;
                 $new_image->guest_id = $id;
                 $new_image->type = $type;
-                $new_image->path = $single->store('events/images');
+                $path = substr($single->store('public/events/videos'), 7);
+                $new_image->path = $path;
                 $new_image->save();
             }
             if($type == 'text'){
