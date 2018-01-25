@@ -26,7 +26,7 @@ class AnswersController extends Controller
     public function create(Request $request)
     {
         $question = Question::findOrFail($request->question_id);
-        $answers = Answer::where('question_id',$request->question_id)->get();
+        $answers = Answer::where('question_id',$request->question_id)->orderBy('position', 'asc')->get();
         return view('answers.create', compact('question', 'answers'));
     }
 
@@ -40,6 +40,20 @@ class AnswersController extends Controller
     {
       Answer::create($request->all());
       return redirect('/answers/create?question_id='.$request->question_id);
+    }
+
+    public function sort(Request $request, $id)
+    {
+        $i = 0;
+        foreach($request->answer as $id_answer){
+            $answer = Answer::findOrFail($id_answer);
+            $i++;
+            $answer->position = $i;
+            $answer->save();
+        }
+        return response(null, 201);
+    //   Answer::create($request->all());
+    //   return redirect('/answers/create?question_id='.$request->question_id);
     }
 
     /**

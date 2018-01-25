@@ -19,4 +19,9 @@ class Question extends Model
     public function answers(){
         return Question::hasMany('App\Answer');
     }
+
+    public function orderdAnswers(){
+        $answers = Answer::where('question_id', $this->id)->orderBy('position', 'asc')->get();
+        return $answers;
+    }
 }

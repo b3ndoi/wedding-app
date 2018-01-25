@@ -15,7 +15,7 @@
                         <div class="row">
                           <div class="col-lg-12">
                             <h4>{{$question->question}}</h4>
-                            @foreach ($question->answers as $answer)
+                            @foreach ($question->orderdAnswers() as $answer)
                               <div class="radio">
                                   <label><input type="radio" name="radio_{{$question->id}}" value="{{$answer->id}}">{{$answer->name}}</label>
                               </div>
@@ -27,7 +27,7 @@
                         <div class="row">
                           <div class="col-lg-12">
                             <h4>{{$question->question}}</h4>
-                            @foreach ($question->answers as $answer)
+                            @foreach ($question->orderdAnswers() as $answer)
                               <div class="checkbox">
                                   <label><input type="checkbox" name="check_{{$question->id}}[]" value="{{$answer->id}}">{{$answer->name}}</label>
                               </div>

@@ -42,7 +42,7 @@
                             </thead>
                             <tbody>
                               @foreach ($answers as $answer)
-                                <tr>
+                                <tr id = 'answer-{{$answer->id}}'>
                                   <td>{{$answer->name}}</td>
                                   <td>{{$answer->is_correct==0?'Ne':'Da'}}</td>
                                 </tr>

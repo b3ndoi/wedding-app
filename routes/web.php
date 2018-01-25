@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/events', 'EventsController');
     Route::resource('/questions', 'QuestionsController');
     Route::resource('/answers', 'AnswersController');
+    Route::patch('/answers/{event_id}/sort', 'AnswersController@sort');
     
     // Tsst Web routes
     // Route::resource('/tests', 'TestsController');
