@@ -59,7 +59,7 @@ class TestsController extends Controller
             $single_array = explode('_', $key);
             $type = $single_array[0];
             $single_id = $single_array[1];
-            if($type == 'video'){
+            if($type == 'video'&& $single){
                 $new_video = new GuestMedia;
                 $new_video->guest_id = $id;
                 $new_video->question_id = $single_id;
@@ -69,7 +69,7 @@ class TestsController extends Controller
                 $new_video->path = $path;
                 $new_video->save();
             }
-            if($type == 'image'){
+            if($type == 'image'&& $single){
                 $new_image = new GuestMedia;
                 $new_image->guest_id = $id;
                 $new_image->question_id = $single_id;
@@ -79,7 +79,7 @@ class TestsController extends Controller
                 $new_image->save();
             }
             // Saves text answer
-            if($type == 'text'){
+            if($type == 'text'&& $single){
                 $new_text_answer = new GuestText;
                 $new_text_answer->question_id = $single_id;
                 $new_text_answer->guest_id = $id;
@@ -88,15 +88,16 @@ class TestsController extends Controller
                 
             }
             // Saves radio button answer
-            if($type == 'radio'){
+            if($type == 'radio'&& $single){
                 $new_radio_answer = new GuestRadio;
                 $new_radio_answer->guest_id = $id;
                 $new_radio_answer->answer_id = $single;
+                $new_radio_answer->question_id = $single_id;
                 $new_radio_answer->save();
                 
             }
             // Saves checkbox answers
-            if($type == 'check'){
+            if($type == 'check'&& $single){
                 $guest = Guest::findOrFail($id);
                 foreach($single as $check){
                     $guest->answers()->attach($check);

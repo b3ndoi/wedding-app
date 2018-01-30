@@ -20,20 +20,20 @@
                         </thead>
                         <tbody>
                             @if($question->qtype->name == 'Fotografija')
-                                @foreach($question->gusetsMedia as $guest)
+                                @foreach($question->gusetsMedia as $guestAnswer)
                                     <tr>
-                                        <th class="col-lg-4">{{$guest->guest->name}}</th>
-                                        <th class="col-lg-4"><img src="{{Storage::url('public/'.$guest->path)}}" class="img-responsive"></th>
+                                        <th class="col-lg-4">{{$guestAnswer->guest->name}}</th>
+                                        <th class="col-lg-4"><img src="{{Storage::url('public/'.$guestAnswer->path)}}" class="img-responsive"></th>
                                         <th class="col-lg-2"></th>
                                         <th class="col-lg-2">
-                                            {!!Form::open('')!!}
+                                            {!!Form::open(['method'=>'DELETE', 'action'=>['AnswersController@deleteAnswerMedia', $guestAnswer->id]])!!}
                                                 <button type="submit" class="btn btn-danger">Obriši</button>
                                             {!!Form::close()!!}
                                         </th>
                                     </tr>
                                 @endforeach
                             @endif
-                            @if($question->qtype->name == 'Tekst')
+                            @if($question->qtype->name == 'Teskt')
                                 @foreach($question->gusetsText as $guest)
                                     <tr>
                                         <th class="col-lg-4">{{$guest->guest->name}}</th>

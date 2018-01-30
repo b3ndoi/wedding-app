@@ -24,6 +24,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/questions', 'QuestionsController');
     Route::resource('/answers', 'AnswersController');
     Route::patch('/answers/{event_id}/sort', 'AnswersController@sort');
+    Route::delete('/answers/{answer_id}/media', 'AnswersController@deleteAnswerMedia');
     
     // Tsst Web routes
     // Route::resource('/tests', 'TestsController');

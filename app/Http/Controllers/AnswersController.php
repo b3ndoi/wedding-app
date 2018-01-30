@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use App\Question;
 use App\Answer;
-
+use App\GuestMedia;
 class AnswersController extends Controller
 {
     /**
@@ -54,6 +55,13 @@ class AnswersController extends Controller
         return response(null, 201);
     //   Answer::create($request->all());
     //   return redirect('/answers/create?question_id='.$request->question_id);
+    }
+
+    public function deleteAnswerMedia($id){
+        $media = GuestMedia::findOrFail($id);
+        Storage::delete('public/'.$media->path);
+        $media->delete();
+        return redirect('questions/'.$media->question_id);
     }
 
     /**
