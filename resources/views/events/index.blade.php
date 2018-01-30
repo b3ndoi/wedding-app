@@ -12,6 +12,7 @@
                     <table class="table">
                         <thead>
                             <tr>
+                                <th>Link</th>
                                 <th>Naziv venčanja</th>
                                 <th>Ime i prezime mladoženje</th>
                                 <th>Ime i prezime malde</th>
@@ -25,6 +26,7 @@
                         <tbody>
                             @foreach($events as $event)
                             <tr>
+                                <td><img src="https://api.qrserver.com/v1/create-qr-code/?data={{route('tests.create',$event->id)}}&amp;size=100x100" alt="" title="" /></td>
                                 <td>{{$event->name}}</td>
                                 <td>{{$event->name_of_groom}}</td>
                                 <td>{{$event->name_of_bride}}</td>

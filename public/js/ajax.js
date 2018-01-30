@@ -14,7 +14,8 @@ function deleteEvent(id){
 
     });
 }
-
+$( "#sortable" ).sortable();
+$( "#sortable" ).disableSelection();
 $(document).ready(function(){
     $( "tbody" ).sortable({
         // Cancel the drag when selecting contenteditable items, buttons, or input boxes
