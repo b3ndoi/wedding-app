@@ -10,10 +10,14 @@ class Answer extends Model
     protected $fillable = ['question_id', 'name', 'is_correct', 'position'];
 
     public function question(){
-        return Answer::belongsTo('App\Question');
+        return $this->belongsTo('App\Question');
     }
 
-    public function ispitanici(){
+    public function guestRadioAnswer(){
+        return $this->hasMany('App\GuestRadio', 'answer_id');
+    }
+
+    public function guests(){
         return $this->belongsToMany('App\Guest', 'guests_answers', 'answer_id', 'guest_id');
     }
 }

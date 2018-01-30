@@ -20,6 +20,18 @@ class Question extends Model
         return Question::hasMany('App\Answer');
     }
 
+    public function gusetsText(){
+        return Question::hasMany('App\GuestText');
+    }
+
+    public function gusetsMedia(){
+        return Question::hasMany('App\GuestMedia');
+    }
+
+    public function guestRadio(){
+        return $this->hasMany('App\GuestRadio', 'question_id');
+    }
+
     public function orderdAnswers(){
         $answers = Answer::where('question_id', $this->id)->orderBy('position', 'asc')->get();
         return $answers;

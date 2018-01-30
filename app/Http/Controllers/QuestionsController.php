@@ -40,7 +40,7 @@ class QuestionsController extends Controller
     public function store(Request $request)
     {
         Question::create($request->all());
-        return redirect('/events/'.$request->event_id);
+        return redirect('events/'.$request->event_id);
     }
 
     /**
@@ -51,7 +51,8 @@ class QuestionsController extends Controller
      */
     public function show($id)
     {
-        //
+        $question = Question::findOrFail($id);
+        return view('questions.show', compact('question'));
     }
 
     /**

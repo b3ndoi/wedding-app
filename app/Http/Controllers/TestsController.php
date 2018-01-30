@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Event;
 use App\Guest;
 use App\GuestMedia;
+use App\GuestRadio;
+use App\GuestText;
 use App\Question;
 
 class TestsController extends Controller
@@ -51,6 +53,7 @@ class TestsController extends Controller
     public function save_answers(Request $request, $id)
     {
         $inputs = $request->all();
+        // return $inputs;
         unset($inputs['_token']);
         foreach($inputs as $key => $single){
             $single_array = explode('_', $key);
@@ -59,6 +62,7 @@ class TestsController extends Controller
             if($type == 'video'){
                 $new_video = new GuestMedia;
                 $new_video->guest_id = $id;
+                $new_video->question_id = $single_id;
                 $new_video->type = $type;
                 $path = substr($single->store('public/events/videos'), 7);
 
@@ -68,22 +72,39 @@ class TestsController extends Controller
             if($type == 'image'){
                 $new_image = new GuestMedia;
                 $new_image->guest_id = $id;
+                $new_image->question_id = $single_id;
                 $new_image->type = $type;
-                $path = substr($single->store('public/events/videos'), 7);
+                $path = substr($single->store('public/events/images'), 7);
                 $new_image->path = $path;
                 $new_image->save();
             }
+            // Saves text answer
             if($type == 'text'){
-
+                $new_text_answer = new GuestText;
+                $new_text_answer->question_id = $single_id;
+                $new_text_answer->guest_id = $id;
+                $new_text_answer->answer = $single;
+                $new_text_answer->save();
+                
             }
+            // Saves radio button answer
             if($type == 'radio'){
-
+                $new_radio_answer = new GuestRadio;
+                $new_radio_answer->guest_id = $id;
+                $new_radio_answer->answer_id = $single;
+                $new_radio_answer->save();
+                
             }
+            // Saves checkbox answers
             if($type == 'check'){
-
+                $guest = Guest::findOrFail($id);
+                foreach($single as $check){
+                    $guest->answers()->attach($check);
+                }
+                
             }
         }
-        return 'Valjda radi ovo cudo';
+        return redirect('events');
         // $guest = Guest::find($id)->answers()->attach($request->id_odgovora);
 
         // return redirect('tests/questions/'.$guest->id);

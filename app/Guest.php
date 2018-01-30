@@ -20,4 +20,12 @@ class Guest extends Model
     public function media(){
       return $this->hasMany('App\GuestMedia', 'guest_id');
     }
+
+    public function radionAnswers(){
+      return $this->hasMany('App\GuestRadio', 'guest_id');
+    }
+
+    public function textAnswers(){
+      return $this->hasMany('App\GuestRadio', 'guest_id');
+    }
 }

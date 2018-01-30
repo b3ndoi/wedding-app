@@ -42,9 +42,9 @@
                             </thead>
                             <tbody>
                               @foreach ($answers as $answer)
-                                <tr id = 'answer-{{$answer->id}}'>
-                                  <td>{{$answer->name}}</td>
-                                  <td>{{$answer->is_correct==0?'Ne':'Da'}}</td>
+                                <tr id = 'answer-{{$answer->id}}' style="cursor: move;">
+                                  <td class="col-lg-6">{{$answer->name}}</td>
+                                  <td class="col-lg-6">{{$answer->is_correct==0?'Ne':'Da'}}</td>
                                 </tr>
                               @endforeach
                             </tbody>

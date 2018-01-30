@@ -8,23 +8,17 @@
                 <div class="panel-heading">{{$event->name}}</div>
 
                 <div class="panel-body">
-                        @foreach($event->guests as $guest)
-                        {{$guest->name}}
-                            @foreach($guest->media as $media)
-                                
-                                    <img src="{{Storage::url('public/'.$media->path)}}" class="img-responsive col-lg-3" alt="">
-                                
-                            @endforeach
-                        @endforeach
+                        
                     <a class="btn btn-primary" href="{{route('questions.create', ['event_id' => $event->id])}}">Novo pitanje</a>
                     {!!Form::open(['action'=>['EventsController@destroy', $event->id],'method'=>'DELETE'])!!}
 
                     {!!Form::submit('Obriši',["class"=>"btn btn-danger pull-right"])!!}
 
                     {!!Form::close()!!}
-                    <table class="table">
+                    <table class="table table-striped">
                         <thead>
                             <tr>
+                                <th>Broj odgovora</th>
                                 <th>Pitanje</th>
                                 <th>Tip pitanja</th>
                                 <th>Broj ponuđenih odgovora</th>
@@ -36,7 +30,18 @@
                         <tbody>
                             @foreach($event->questions as $question)
                             <tr>
-                                <td> {{$question->question}}</td>
+                                <th>
+                                    @if($question->qtype->name == 'Fotografija')
+                                    {{$question->gusetsMedia()->count()}}
+                                    @endif
+                                    @if($question->qtype->name == 'Teskt')
+                                    {{$question->gusetsText()->count()}}
+                                    @endif
+                                    @if($question->qtype->name == 'Radio button')
+                                    {{$question->guestRadio()->count()}}
+                                    @endif
+                                </th>
+                                <td><a href="{{route('questions.show', $question->id)}}">{{$question->question}}</a></td>
                                 <td>{{$question->qtype->name}}</td>
                                 <td>
                                   @if ($question->qtype->name == 'Checkbox button' || $question->qtype->name == 'Radio button' )
