@@ -14,6 +14,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.indigo-pink.min.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">  
+    <link href="{{ asset('css/grid.css') }}" rel="stylesheet">    
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </head>

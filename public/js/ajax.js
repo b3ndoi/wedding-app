@@ -17,7 +17,7 @@ function deleteEvent(id){
 $( "#sortable" ).sortable();
 $( "#sortable" ).disableSelection();
 $(document).ready(function(){
-    $( "tbody" ).sortable({
+    $( "ul" ).sortable({
         // Cancel the drag when selecting contenteditable items, buttons, or input boxes
         cancel: ":input,button,[contenteditable]",
         // Set it so rows can only be moved vertically

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Question;
+use App\Answer;
 
 class QuestionsController extends Controller
 {
@@ -52,6 +53,8 @@ class QuestionsController extends Controller
     public function show($id)
     {
         $question = Question::findOrFail($id);
+        $guest_check_count = Answer::where('question_id', $id)->get();
+        // return $guest_check_count;
         return view('questions.show', compact('question'));
     }
 
