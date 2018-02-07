@@ -178,7 +178,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         // Stripe Provider
-        Laravel\Cashier\CashierServiceProvider::class
+        // Laravel\Cashier\CashierServiceProvider::class
     ],
 
     /*

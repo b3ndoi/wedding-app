@@ -49,7 +49,7 @@ class EventsController extends Controller
     public function store(Request $request)
     {
         $event = new Event;
-        $user = Auth::user();
+        // $user = Auth::user();
         // $user->charge(100); Stripe Charge
         if($file = $request->file('cover_image')){
           $name = time().'.'.$file->getClientOriginalExtension();

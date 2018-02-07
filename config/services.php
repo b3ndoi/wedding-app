@@ -29,10 +29,10 @@ return [
         'secret' => env('SPARKPOST_SECRET'),
     ],
 
-    'stripe' => [
-        'model' => App\User::class,
-        'key' => env('pk_test_xsQK6jHJPBGAy8WsUafghdyN'),
-        'secret' => env('sk_test_wdwPVHQjdIEWoUF1syDwoQV2'),
-    ],
+    // 'stripe' => [
+    //     'model' => App\User::class,
+    //     'key' => env('pk_test_xsQK6jHJPBGAy8WsUafghdyN'),
+    //     'secret' => env('sk_test_wdwPVHQjdIEWoUF1syDwoQV2'),
+    // ],
 
 ];
