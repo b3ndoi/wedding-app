@@ -21,6 +21,7 @@
                                 <th></th>
                                 <th></th>
                                 <th></th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,8 +35,10 @@
                                 <td>{{$event->date->format('d.m.Y.')}}</td>
                                 <td><a href="{{route('events.show',$event->id)}}" class="btn btn-default">Dodaj ankete</a></td>
                                 <td><a href="{{route('events.edit',$event->id)}}" class="btn btn-primary">Izmeni</a></td>
-                                {{-- <td><button class="btn btn-danger" onClick="deleteEvent({{$event->id}})">Obriši</button></td> --}}
+                                @if($event->questions()->count()>0)                                
+                                <td><a href="{{route('event.config',$event->id)}}" class="btn btn-danger">Pripremi stranicu</a></td>
                                 <td><a href="{{route('tests.create',$event->id)}}" class="btn btn-success">Testiraj ankete</a></td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>

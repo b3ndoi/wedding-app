@@ -21,6 +21,10 @@ Auth::routes();
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/events', 'EventsController');
+    Route::get('/events/config/{id}', 'EventsController@config')->name('event.config');
+    Route::patch('/events/config/sortPhotos', 'EventsController@sortPhotos')->name('event.configPhotos');
+    Route::patch('/events/config/sortQuestions', 'EventsController@sortQuestions')->name('event.configQuestions');
+    
     Route::resource('/questions', 'QuestionsController');
     Route::resource('/answers', 'AnswersController');
     Route::patch('/answers/{event_id}/sort', 'AnswersController@sort');

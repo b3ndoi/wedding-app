@@ -179,6 +179,8 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         // Stripe Provider
         // Laravel\Cashier\CashierServiceProvider::class
+        // PayPal
+        Srmklive\PayPal\Providers\PayPalServiceProvider::class
     ],
 
     /*
@@ -229,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
     ],
 
 ];

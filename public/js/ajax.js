@@ -14,8 +14,48 @@ function deleteEvent(id){
 
     });
 }
-$( "#sortable" ).sortable();
-$( "#sortable" ).disableSelection();
+$( ".sortable" ).sortable({
+    update: function (event, ui) {
+        // sortable() - Creates an array of the elements based on the element's id. 
+        // The element id must be a word separated by a hyphen, underscore, or equal sign. For example, <tr id='item-1'>
+        var data = $(this).sortable('serialize');
+        console.log(data);
+        //alert(data); <- Uncomment this to see what data will be sent to the server
+ 
+        // AJAX POST to server
+        $.ajax({
+            data: data,
+            type: 'PATCH',
+            url: 'sortPhotos',
+            success: function(response) {
+            console.log(data);
+        }
+        });
+    }
+});
+$( ".sortable" ).disableSelection();
+
+$( ".question_display" ).sortable({
+    update: function (event, ui) {
+        // sortable() - Creates an array of the elements based on the element's id. 
+        // The element id must be a word separated by a hyphen, underscore, or equal sign. For example, <tr id='item-1'>
+        var data = $(this).sortable('serialize');
+        console.log(data);
+        //alert(data); <- Uncomment this to see what data will be sent to the server
+ 
+        // AJAX POST to server
+        $.ajax({
+            data: data,
+            type: 'PATCH',
+            url: 'sortQuestions',
+            success: function(response) {
+            console.log(data);
+        }
+        });
+    }
+});
+$( ".question_display" ).disableSelection();
+
 $(document).ready(function(){
     $( "ul" ).sortable({
         // Cancel the drag when selecting contenteditable items, buttons, or input boxes

@@ -41,7 +41,9 @@
                                     {{$question->guestRadio()->count()}}
                                     @endif
                                 </th>
-                                <td><a href="{{route('questions.show', $question->id)}}">{{$question->question}}</a></td>
+                                <td>
+                                    <a href="{{route('questions.show', $question->id)}}">{{$question->question}}</a>
+                                </td>
                                 <td>{{$question->qtype->name}}</td>
                                 <td>
                                   @if ($question->qtype->name == 'Checkbox button' || $question->qtype->name == 'Radio button' )

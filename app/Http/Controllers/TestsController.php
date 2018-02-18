@@ -74,7 +74,9 @@ class TestsController extends Controller
                 $new_image->guest_id = $id;
                 $new_image->question_id = $single_id;
                 $new_image->type = $type;
+                // return $single;
                 $path = substr($single->store('public/events/images'), 7);
+                
                 $new_image->path = $path;
                 $new_image->save();
             }
