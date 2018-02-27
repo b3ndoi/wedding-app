@@ -1,11 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+    <h3>Venčanja</h3>
     <div class="row">
+    @foreach($events as $event)
+    <div class="card col-lg-4">
+    <img class="card-img-top" src="https://picsum.photos/640/480/?image={{rand(1,1000)}}" alt="Card image cap">
+    <div class="card-body">
+        <h5 class="card-title">{{$event->name}}</h5>
+        <p class="card-text">
+            <p><b> Mlada: </b>{{$event->name_of_bride}}</p>
+          <p><b>Mladoženja: </b>{{$event->name_of_groom}}</p>
+        </p>
+        <a href="{{route('events.show',$event->id)}}" class="btn btn-primary">Pogledaj</a>
+    </div>
+    </div>
+    @endforeach
+  </div>
+           
+    <!-- <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Venčanja</div>
 
                 <div class="panel-body">
                     <a href="{{route('events.create')}}" class="btn btn-primary">Dodaj venčanje</a>
@@ -47,6 +62,5 @@
                 </div>
             </div>
         </div>
-    </div>
-</div>
+    </div> -->
 @endsection

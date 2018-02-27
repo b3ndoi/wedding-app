@@ -31,12 +31,12 @@
                     {!!Form::close()!!}
                     
                       @if ($answers->count()>0)
-                        <div class="col-lg-12">
+                        <div class="col l12">
                           <h6>Dodati odgovor/i</h6>
-                          <ul class="list-group">
+                          <ul class="collection">
                               @foreach ($answers as $answer)
-                                <li class="list-group-item" id = 'answer-{{$answer->id}}' style="cursor: move;">
-                                  <span class="label label-{{$answer->is_correct==0?'danger':'success'}} pull-right">{{$answer->is_correct==0?'Ne':'Da'}}</span>
+                                <li class="collection-item" id = 'answer-{{$answer->id}}' style="cursor: move;">
+                                  <span class="new badge {{$answer->is_correct==0?'red':'green'}}" data-badge-caption="{{$answer->is_correct==0?'Ne':'Da'}}"></span>
                                   {{$answer->name}}
                                 </li>
                               @endforeach

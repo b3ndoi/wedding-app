@@ -180,7 +180,8 @@ return [
         // Stripe Provider
         // Laravel\Cashier\CashierServiceProvider::class
         // PayPal
-        Srmklive\PayPal\Providers\PayPalServiceProvider::class
+
+        Laravel\Socialite\SocialiteServiceProvider::class,
     ],
 
     /*
@@ -231,7 +232,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
-        'PayPal' => Srmklive\PayPal\Facades\PayPal::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
     ],
 
 ];

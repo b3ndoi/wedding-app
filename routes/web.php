@@ -38,5 +38,6 @@ Route::post('/tests/save_guest', 'TestsController@save_guest')->name('tests.save
     Route::post('/tests/save_answers/{id}', 'TestsController@save_answers')->name('tests.save_answers');
     Route::get('/tests/create/{id}', 'TestsController@create')->name('tests.create');
     Route::get('/tests/questions/{id}', 'TestsController@show')->name('tests.show');
-
+    Route::get('login/google', 'Auth\LoginController@redirectToProvider');
+    Route::get('login/google/callback', 'Auth\LoginController@handleProviderCallback');
 

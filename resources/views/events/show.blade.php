@@ -1,22 +1,21 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
-<div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">{{$event->name}}</div>
+        <div class="col l12">
+            <div class="card-panel">
+                <h4>{{$event->name}}</h4>
 
                 <div class="panel-body">
                         
                     <a class="btn btn-primary" href="{{route('questions.create', ['event_id' => $event->id])}}">Novo pitanje</a>
-                    {!!Form::open(['action'=>['EventsController@destroy', $event->id],'method'=>'DELETE'])!!}
+                    <!-- {!!Form::open(['action'=>['EventsController@destroy', $event->id],'method'=>'DELETE'])!!}
 
                     {!!Form::submit('Obriši',["class"=>"btn btn-danger pull-right"])!!}
 
-                    {!!Form::close()!!}
-                    <table class="table table-striped">
-                        <thead>
+                    {!!Form::close()!!} -->
+                    <table class="table">
+                        <thead class="thead-dark">
                             <tr>
                                 <th>Broj odgovora</th>
                                 <th>Pitanje</th>
@@ -52,7 +51,7 @@
                                     Nema
                                   @endif
                                 </td>
-                                <td>{!!$question->status=='0'?"<span class='alert-danger'>Neaktivna</span>":"<span class='alert-success'>Aktivna</span>"!!}</td>
+                                <td>{!!$question->status=='0'?"<span class='btn btn-danger'>Neaktivna</span>":"<span class='btn btn-success'>Aktivna</span>"!!}</td>
                                 <td><a href="{{route('questions.edit',[$question->id])}}" class="btn btn-default">Izmeni</a></td>
                                 <td>
                                   @if ($question->qtype->name == 'Checkbox button' || $question->qtype->name == 'Radio button' )
@@ -67,5 +66,4 @@
             </div>
         </div>
     </div>
-</div>
 @endsection
