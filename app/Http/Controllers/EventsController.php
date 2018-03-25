@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\Storage;
 use App\Event;
 use App\GuestMedia;
 use App\Question;
@@ -158,10 +158,19 @@ class EventsController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $input = $request->all();
-      $event = Event::findOrFail($id);
-      $event->update($input);
-      return redirect('/events');
+        $event = Event::findOrFail($id);
+        if($request->file('cover_image')){
+            Storage::delete($event->cover_image);
+            $path = substr($request->file('cover_image')->store('public/events/covers'), 7);
+            $event->cover_image = $path;
+        }
+        $event->name = $request->name;
+        $event->name_of_groom = $request->name_of_groom;
+        $event->name_of_bride =$request->name_of_bride;
+        $event->location = $request->location;
+        $event->date = $request->date;
+        $event->save();
+        return redirect('/events');
     }
 
     /**

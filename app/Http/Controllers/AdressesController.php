@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Adress;
-
+use Illuminate\Support\Facades\Storage;
 class AdressesController extends Controller
 {
     /**

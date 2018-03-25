@@ -6,7 +6,7 @@
             <div class="card col-lg-12">
                 <div class="card-heading mt-3"><h3>Izmeni dogadjaj</h3></div>
                 <div class="card-body">
-                    {!!Form::model($event, ['method'=>'patch','action' => ['EventsController@update', $event->id]])!!}
+                    {!!Form::model($event, ['method'=>'patch','action' => ['EventsController@update', $event->id], 'enctype' => 'multipart/form-data'])!!}
                     {!!Form::hidden('user_id',null)!!}
                     {!!Form::label('name', 'Ime događaja')!!}
                     {!!Form::text('name',null, ['class' => 'form-control'])!!}
@@ -18,6 +18,8 @@
                     {!!Form::text('location',null, ['class' => 'form-control'])!!}
                     {!!Form::label('date', 'Datum venčanja')!!}
                     {!!Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
+                    {!!Form::label('cover_image', 'Izaberite sliku')!!}
+                    {!!Form::file('cover_image',['class' => 'form-control-file'])!!}
                     {!!Form::submit('Izmeni',['class' => 'btn btn-success mt-3'])!!}
                     {!!Form::close()!!}
                 </div>
