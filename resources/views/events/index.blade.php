@@ -12,7 +12,9 @@
             <p><b> Mlada: </b>{{$event->name_of_bride}}</p>
           <p><b>Mladoženja: </b>{{$event->name_of_groom}}</p>
         </p>
+        
         <a href="{{route('events.show',$event->id)}}" class="btn btn-primary">Pogledaj</a>
+        <img src="https://api.qrserver.com/v1/create-qr-code/?data={{route('tests.create',$event->id)}}&amp;size=100x100" alt="" title="" />
     </div>
     </div>
     @endforeach
