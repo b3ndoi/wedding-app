@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Event;
+use App\Adress;
 use App\GuestMedia;
 use App\Question;
 
@@ -103,10 +104,10 @@ class EventsController extends Controller
     {
         $event = Event::find($id);
         $photos = Question::where('event_id', $id)->where('qtype_id', 4)->get();
-        
+        $adresses = Adress::where('event_id', $id)->get();
         $posts_stories = Post::where('event_id', $id)->where('category_id', 1)->get();
         $event_id = $id;
-        return view('tests.theme',compact('event', 'event_id', 'posts_stories', 'photos'));
+        return view('tests.theme',compact('event', 'event_id', 'posts_stories', 'photos', 'adresses'));
     }
 
     /**

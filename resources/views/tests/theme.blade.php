@@ -684,50 +684,29 @@
       <!-- White border -->
       <div class="wed_white_inner_border">
         <!-- section -->
+        @if($adresses->count() > 0)
         <section id="where" class="wed_section_inner">
           <div class="container-full">
             <div class="row">
-
-              <div class="col-md-4 wed_wht_txt wed_image_bck wed_service_block" data-image="http://placehold.it/790x600">
+              @foreach($adresses as $adress)
+              <div class="col-md-4 wed_wht_txt wed_image_bck wed_service_block" data-image="{{Storage::url($adress->photo)}}">
                 <!-- Over -->
                 <div class="wed_over" data-color="rgb(151, 124, 245)" data-opacity="0.3" data-blend="color"></div>
                 <div class="wed_over" data-color="#000" data-opacity="0.3"></div>
 
                 <div class="wed_simple_block text-center">
-                  <h4>CHURCH</h4>
+                  <h4>{{$adress->name}}</h4>
                   <br>
-                  <p>790 3rd Street Lockport, <br>NY 14094</p>
+                  <p>{{$adress->location}}</p>
                 </div>
               </div>
-
-              <div class="col-md-4 wed_wht_txt wed_image_bck wed_service_block" data-image="http://placehold.it/790x600">
-                <!-- Over -->
-                <div class="wed_over" data-color="rgb(151, 124, 245)" data-opacity="0.3" data-blend="color"></div>
-                <div class="wed_over" data-color="#000" data-opacity="0.3"></div>
-
-                <div class="wed_simple_block text-center">
-                  <h4>RESTAURANT</h4>
-                  <br>
-                  1628 Orchard Street Saint Cloud, <br>MN 56301
-                </div>
-              </div>
-
-              <div class="col-md-4 wed_wht_txt wed_image_bck wed_service_block" data-image="http://placehold.it/790x600">
-                <!-- Over -->
-                <div class="wed_over" data-color="rgb(151, 124, 245)" data-opacity="0.3" data-blend="color"></div>
-                <div class="wed_over" data-color="#000" data-opacity="0.3"></div>
-
-                <div class="wed_simple_block text-center">
-                  <h4>HOTEL</h4>
-                  <br>
-                  1285 7th Avenue Paducah, <br>KY 42001
-                </div>
-              </div>
-            </div>
+              @endforeach
+              
             <!-- Row end -->
           </div>
           <!-- Container end -->
         </section>
+        @endif
         <!-- section end -->
 
         <!-- section -->
