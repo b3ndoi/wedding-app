@@ -50,14 +50,6 @@
           <div class="wed_top_menu_cont">
               <ul class="wed_top_menu">
                 <li class="wed_parent"><a href="#">Home</a>
-                  <ul>
-                       <li><a href="01_index.html">Firefly Demo</a></li>
-                       <li><a href="02_index.html">Dandelions Demo</a></li>
-                       <li><a href="03_index.html">Red Roses Demo</a></li>
-                       <li><a href="04_index.html">Orange Roses Demo</a></li>
-                       <li><a href="06_index.html">Blue Butterflies Demo</a></li>
-                       <li><a href="05_index.html">Purple Butterflies Demo</a></li>
-                  </ul>
                 </li>
                 <li><a href="#story">Story</a></li>
                 <li><a href="#where">Where&When</a></li>
@@ -99,7 +91,7 @@
     <section id="wed_content" class="wed_content">
 
       <!-- section -->
-      <section class="wed_section_inner wed_image_bck wed_fixed wed_wht_txt" data-stellar-background-ratio="0.2" data-image="http://placehold.it/1400x900" >
+      <section class="wed_section_inner wed_image_bck wed_fixed wed_wht_txt" data-stellar-background-ratio="0.2" data-image="{{Storage::url($event->bride_cover)}}" >
         <!-- OVER -->
         <div class="wed_over" data-color="#000" data-opacity="0.1"></div>
         <div class="container">
@@ -111,7 +103,7 @@
                 <div class="col-md-5 wed_image_bck wed_fixed text-left wed_small_arrow">
                     <h2 class="wed_image_bck" data-txt-color="#f50">{{$event->name_of_bride}}</h2>
                     <h4>Mlada</h4>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, vel. Odio, ex ut veritatis reprehenderit in facilis nobis! Ratione eos sint eligendi exercitationem consequatur, distinctio molestias minima, assumenda nulla autem!</p>
+                    <p>{{$event->bride_about}}</p>
                     <p><img src="images/laracroft_sign.png" height="80" alt=""></p>
                 </div>
                 <!-- col end -->
@@ -126,7 +118,7 @@
       <!-- section end -->
 
       <!-- section -->
-      <section class="wed_section_inner wed_image_bck wed_fixed wed_wht_txt" data-stellar-background-ratio="0.2" data-image="http://placehold.it/1400x900" >
+      <section class="wed_section_inner wed_image_bck wed_fixed wed_wht_txt" data-stellar-background-ratio="0.2" data-image="{{Storage::url($event->groom_cover)}}" >
 
         <!-- OVER -->
         <div class="wed_over" data-color="#000" data-opacity="0.1"></div>
@@ -140,7 +132,7 @@
               <div class="col-md-5 col-md-offset-7 wed_image_bck wed_fixed text-left wed_groom wed_small_arrow" >
                   <h2>{{$event->name_of_groom}}</h2>
                   <h4>Mladoženja</h4>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, vel. Odio, ex ut veritatis reprehenderit in facilis nobis! Ratione eos sint eligendi exercitationem consequatur, distinctio molestias minima, assumenda nulla autem !</p>
+                  <p>{{$event->groom_about}}</p>
                   <p><img src="images/Robert_Mugabe_Signature_wh.png" height="80" alt=""></p>
 
               </div>

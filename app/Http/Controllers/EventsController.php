@@ -75,8 +75,18 @@ class EventsController extends Controller
         $path = substr($request->file('cover_image')->store('public/events/covers'), 7);
 
         $event->cover_image = $path;
+
+        $path = substr($request->file('groom_cover')->store('public/events/groom'), 7);
+
+        $event->groom_cover = $path;
+        $path = substr($request->file('bride_cover')->store('public/events/bride'), 7);
+
+        $event->bride_cover = $path;
+
         $event->user_id = Auth::user()->id;
         $event->name =$request->name;
+        $event->bride_about = $request->bride_about;
+        $event->groom_about = $request->groom_about;
         $event->name_of_groom = $request->name_of_groom;
         $event->name_of_bride =$request->name_of_bride;
         $event->location = $request->location;
@@ -165,7 +175,19 @@ class EventsController extends Controller
             $path = substr($request->file('cover_image')->store('public/events/covers'), 7);
             $event->cover_image = $path;
         }
+        if($request->file('bride_cover')){
+            Storage::delete($event->bride_cover);
+            $path = substr($request->file('bride_cover')->store('public/events/bride'), 7);
+            $event->bride_cover = $path;
+        }
+        if($request->file('groom_cover')){
+            Storage::delete($event->groom_cover);
+            $path = substr($request->file('groom_cover')->store('public/events/groom'), 7);
+            $event->groom_cover = $path;
+        }
         $event->name = $request->name;
+        $event->bride_about = $request->bride_about;
+        $event->groom_about = $request->groom_about;
         $event->name_of_groom = $request->name_of_groom;
         $event->name_of_bride =$request->name_of_bride;
         $event->location = $request->location;
