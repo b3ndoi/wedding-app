@@ -720,7 +720,7 @@
           
             <!-- map -->
             <div class="wed_map">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d310746.90945683786!2d12.918360609588492!3d52.520582938561994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sru!4v1454387964065" style="border:0; height: 450px; width: 100%;" allowfullscreen></iframe>
+            <iframe width="600" height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJvT-116N6WkcR5H4X8lxkuB0&key=AIzaSyDqL5KA1gyzSokPyaptOF23wUgjiU7oKm8" allowfullscreen></iframe>
             </div>
             <!-- map end -->
         </section>
