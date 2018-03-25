@@ -109,8 +109,8 @@
               <div data-animation="animation_blocks" data-bottom="@class:noactive" data--100-bottom="@class:active">
 
                 <div class="col-md-5 wed_image_bck wed_fixed text-left wed_small_arrow">
-                    <h2 class="wed_image_bck" data-txt-color="#f50">Sally Craft</h2>
-                    <h4>The Bride</h4>
+                    <h2 class="wed_image_bck" data-txt-color="#f50">{{$event->name_of_bride}}</h2>
+                    <h4>Mlada</h4>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, vel. Odio, ex ut veritatis reprehenderit in facilis nobis! Ratione eos sint eligendi exercitationem consequatur, distinctio molestias minima, assumenda nulla autem!</p>
                     <p><img src="images/laracroft_sign.png" height="80" alt=""></p>
                 </div>
@@ -138,8 +138,8 @@
             <div data-animation="animation_blocks" data-bottom="@class:noactive" data--100-bottom="@class:active">
 
               <div class="col-md-5 col-md-offset-7 wed_image_bck wed_fixed text-left wed_groom wed_small_arrow" >
-                  <h2>Mark Holts</h2>
-                  <h4>The Groom</h4>
+                  <h2>{{$event->name_of_groom}}</h2>
+                  <h4>Mladoženja</h4>
                   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vero, vel. Odio, ex ut veritatis reprehenderit in facilis nobis! Ratione eos sint eligendi exercitationem consequatur, distinctio molestias minima, assumenda nulla autem !</p>
                   <p><img src="images/Robert_Mugabe_Signature_wh.png" height="80" alt=""></p>
 
@@ -162,6 +162,7 @@
 
 
         <!-- story section -->
+        @if($posts_stories->count() > 0)
         <section id="story" class="wed_section_outter">
 
           <div class="container">             
@@ -240,6 +241,7 @@
           <!-- END of CONTAINER -->
 
         </section> 
+        @endif
         <!-- Section end -->
 
 
@@ -317,31 +319,7 @@
       <!-- section end -->
 
       <!-- White border -->
-      <div class="wed_white_inner_border">
-        <!-- section -->
-        <section class="wed_section_inner wed_image_bck wed_wht_txt wed_fixed wed_border" data-stellar-background-ratio="0.2" data-image="http://placehold.it/1400x900" >
-          <!-- Over -->
-          <div class="wed_over" data-color="rgb(151, 124, 245)" data-opacity="0.7"></div>
-          <div class="wed_over" data-color="rgb(151, 124, 245)" data-opacity="0.9" data-blend="screen"></div>
-
-          <div class="container">
-            <div class="row wed_auto_height wed_middle_titles">
-              <div class="col-md-12 wed_image_bck wed_fixed text-center" >
-                <h2> Are you attending?</h2>
-                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ultrices malesuada ante quis pharetra. Nullam notn bibendum dolor. Ut vel turpis accumsan, efficitur dolor fermentum, tincidunt metus. Etiam ut ultrices </p>
-                <a href="#rsvp" class="btn btn_new">RSVP</a>
-              </div>
-              <!-- col end -->
-
-            </div>
-            <!-- row end -->
-
-           </div>          
-          <!-- container end -->
-
-        </section>
-        <!-- section end -->
-      </div>   
+         
       <!-- White border end -->
 
       <!-- section -->
@@ -781,61 +759,7 @@
 
 
       <!-- section -->
-      <section id="journal" class="wed_section_outter">
-        <div class="container text-center wed_great_titles">
-
-          <h2>Wedding Journal</h2>
-
-          <!-- boxes -->
-          <div class="wed_icon_boxes row text-left">
-
-              <!-- item -->
-              <div class="col-md-4 col-sm-12">
-
-                <a href="#" class="wed_news_block">
-                  <span class="wed_news_img wed_image_bck" data-border="#e4d4fb">
-                    <img src="http://placehold.it/790x600" alt="">
-                  </span>
-                  <span class="wed_news_title">Planning Honeymoon Trip</span>
-                  <span class="wed_news_author">Lawrence Stephens | 10 December</span>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa similique porro officiis nobis nulla quidem nihil iste veniam ut sit, maiores.</p>
-                  <span class="btn btn_new">Read More</span>
-                </a>
-              </div> 
-
-              <!-- item -->
-              <div class="col-md-4 col-sm-12">
-
-                <a href="#" class="wed_news_block">
-                  <span class="wed_news_img wed_image_bck" data-border="#e4d4fb">
-                    <img src="http://placehold.it/790x600" alt="">
-                  </span>
-                  <span class="wed_news_title">Surprises For our Guests</span>
-                  <span class="wed_news_author">Carolyn Moreno | 8 December</span>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa similique porro officiis nobis nulla quidem nihil iste veniam ut sit, maiores.</p>
-                  <span class="btn btn_new">Read More</span>
-                </a>
-              </div> 
-
-              <!-- item -->
-              <div class="col-md-4 col-sm-12">
-
-                <a href="#" class="wed_news_block">
-                  <span class="wed_news_img wed_image_bck" data-border="#e4d4fb">
-                    <img src="http://placehold.it/790x600" alt="">
-                  </span>
-                  <span class="wed_news_title">Bachelor Party!</span>
-                  <span class="wed_news_author">Donald Green | 1 December</span>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa similique porro officiis nobis nulla quidem nihil iste veniam ut sit, maiores.</p>
-                  <span class="btn btn_new">Read More</span>
-                </a>
-              </div> 
-
-          </div>
-          <!-- boxes end -->
-        </div>
-        <!-- container end -->
-      </section>
+    
       <!-- section end -->
 
     <!-- White border -->
