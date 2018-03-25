@@ -14,7 +14,7 @@
                     {!!Form::submit('Obriši',["class"=>"btn btn-danger pull-right"])!!}
 
                     {!!Form::close()!!} -->
-                    <table class="table">
+                    <table class="table mt-3">
                         <thead class="thead-dark">
                             <tr>
                                 <th>Broj odgovora</th>

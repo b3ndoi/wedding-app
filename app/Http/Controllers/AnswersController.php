@@ -27,8 +27,9 @@ class AnswersController extends Controller
     public function create(Request $request)
     {
         $question = Question::findOrFail($request->question_id);
+        $event_id = $question->event->id;
         $answers = Answer::where('question_id',$request->question_id)->orderBy('position', 'asc')->get();
-        return view('answers.create', compact('question', 'answers'));
+        return view('answers.create', compact('question', 'answers', 'event_id'));
     }
 
     /**

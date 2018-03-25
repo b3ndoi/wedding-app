@@ -22,6 +22,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('/events', 'EventsController');
     Route::get('/events/config/{id}', 'EventsController@config')->name('event.config');
+    Route::get('/events/theme/{id}/view', 'EventsController@theme')->name('event.theme');
     Route::patch('/events/config/sortPhotos', 'EventsController@sortPhotos')->name('event.configPhotos');
     Route::patch('/events/config/sortQuestions', 'EventsController@sortQuestions')->name('event.configQuestions');
     
@@ -30,6 +31,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::patch('/answers/{event_id}/sort', 'AnswersController@sort');
     Route::delete('/answers/{answer_id}/media', 'AnswersController@deleteAnswerMedia');
     
+    Route::get('/event/{event_id}/posts/', 'PostsController@index')->name('posts.index');
+    Route::post('/event/{event_id}/posts/', 'PostsController@store')->name('posts.store');
+    Route::get('/event/{event_id}/posts/create', 'PostsController@create')->name('posts.create');
+    Route::get('/event/{event_id}/posts/{id}/edit', 'PostsController@edit')->name('posts.edit');
+    Route::put('/event/{event_id}/posts/{id}', 'PostsController@update')->name('posts.update');
+    Route::delete('/event/{event_id}/posts/{id}', 'PostsController@destroy')->name('posts.destroy');
+
+    Route::get('/event/{event_id}/adresses/', 'AdressesController@index')->name('adresses.index');
+    Route::post('/event/{event_id}/adresses/', 'AdressesController@store')->name('adresses.store');
+    Route::get('/event/{event_id}/adresses/create', 'AdressesController@create')->name('adresses.create');
+    Route::get('/event/{event_id}/adresses/{id}/edit', 'AdressesController@edit')->name('adresses.edit');
+    Route::put('/event/{event_id}/adresses/{id}', 'AdressesController@update')->name('adresses.update');
+    Route::delete('/event/{event_id}/adresses/{id}', 'AdressesController@destroy')->name('adresses.destroy');
     // Tsst Web routes
     // Route::resource('/tests', 'TestsController');
     

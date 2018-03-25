@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
 <div class="container">
@@ -9,7 +9,7 @@
             </div>
             <div class="panel panel-default">
                 <div class="panel-heading text-center	"><h4 class="">Novi odgovori na pitanje: <b>{{$question->question}}</b></h4></div>
-                <div class="panel-body">
+                <div class="card-body">
                     
                     {!!Form::open(['method'=>'post','action' => 'AnswersController@store'])!!}
                     {!!Form::hidden('question_id',$question->id, ['class' => 'form-control'])!!}
@@ -31,13 +31,13 @@
                     {!!Form::close()!!}
                     
                       @if ($answers->count()>0)
-                        <div class="col l12">
+                        <div class="col-lg-12 mt-3">
                           <h6>Dodati odgovor/i</h6>
-                          <ul class="collection">
+                          <ul class="list-group">
                               @foreach ($answers as $answer)
-                                <li class="collection-item" id = 'answer-{{$answer->id}}' style="cursor: move;">
-                                  <span class="new badge {{$answer->is_correct==0?'red':'green'}}" data-badge-caption="{{$answer->is_correct==0?'Ne':'Da'}}"></span>
+                                <li class="list-group-item" id = 'answer-{{$answer->id}}' style="cursor: move;">
                                   {{$answer->name}}
+                                  <span class="badge badge-{{$answer->is_correct==0?'danger':'success'}} badge-pill">{{$answer->is_correct==0?'Ne':'Da'}}</span>
                                 </li>
                               @endforeach
                             </ul>

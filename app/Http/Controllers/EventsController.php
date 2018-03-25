@@ -8,6 +8,9 @@ use App\Event;
 use App\GuestMedia;
 use App\Question;
 
+use App\Post;
+
+
 use Illuminate\Http\Request;
 
 class EventsController extends Controller
@@ -91,8 +94,19 @@ class EventsController extends Controller
     public function show($id)
     {
         $event = Event::find($id);
+        $event_id = $id;
+        return view('events.show',compact('event', 'event_id'));
+    }
 
-        return view('events.show',compact('event'));
+
+    public function theme($id)
+    {
+        $event = Event::find($id);
+        $photos = Question::where('event_id', $id)->where('qtype_id', 4)->get();
+        
+        $posts_stories = Post::where('event_id', $id)->where('category_id', 1)->get();
+        $event_id = $id;
+        return view('tests.theme',compact('event', 'event_id', 'posts_stories', 'photos'));
     }
 
     /**

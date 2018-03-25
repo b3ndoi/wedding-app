@@ -66,9 +66,11 @@ class QuestionsController extends Controller
      */
     public function edit($id)
     {
+        
         $qtypes = DB::table('qtypes')->pluck('name', 'id')->all();
         $question = Question::findOrFail($id);
-        return view('questions.edit', compact('question', 'qtypes'));
+        $event_id = $question->event->id;
+        return view('questions.edit', compact('question', 'qtypes', 'event_id'));
     }
 
     /**
