@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="{{route('events.create')}}" class="btn btn-primary">Dodaj venčanje</a>
+
     <h3>Venčanja</h3>
+    
     <div class="row">
     @foreach($events as $event)
     <div class="card col-lg-4">
-    <img class="card-img-top" src="https://picsum.photos/640/480/?image={{rand(1,1000)}}" alt="Card image cap">
+    <img class="card-img-top" src="{{Storage::url($event->cover_image)}}" alt="Card image cap">
     <div class="card-body">
         <h5 class="card-title">{{$event->name}}</h5>
         <p class="card-text">
@@ -14,6 +17,7 @@
         </p>
         
         <a href="{{route('events.show',$event->id)}}" class="btn btn-primary">Pogledaj</a>
+        <a href="{{route('events.edit',$event->id)}}" class="btn btn-primary">Izmeni</a>
         <img src="https://api.qrserver.com/v1/create-qr-code/?data={{route('tests.create',$event->id)}}&amp;size=100x100" alt="" title="" />
     </div>
     </div>

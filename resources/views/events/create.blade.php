@@ -3,10 +3,9 @@
 @section('content')
 <div class="container">
     <div class="row">
-            <div class="panel panel-default">
-                <div class="panel-heading">Dodaj dogadjaj</div>
-                <a href="{{route('events.index')}}" class="btn btn-default">Nazad</a>
-                <div class="panel-body">
+            <div class="card col-lg-12">
+                <div class="card-heading mt-3"><h3>Dodaj dogadjaj</h3></div>
+                <div class="card-body">
                     {!!Form::open(['method'=>'post','action' => 'EventsController@store', 'enctype' => 'multipart/form-data'])!!}
                     {!!Form::hidden('user_id','1')!!}
                     {!!Form::label('name', 'Ime događaja')!!}
@@ -21,7 +20,7 @@
                     {!!Form::date('date', \Carbon\Carbon::now(), ['class' => 'form-control'])!!}
                     {!!Form::label('cover_image', 'Izaberite sliku')!!}
                     {!!Form::file('cover_image',['class' => 'form-control-file'])!!}
-                    {!!Form::submit('Click Me!',['class' => 'btn btn-primary'])!!}
+                    {!!Form::submit('Dodaj',['class' => 'btn btn-success mt-3'])!!}
                     {!!Form::close()!!}
                 </div>
             </div>
