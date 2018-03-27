@@ -285,7 +285,6 @@
             
               <div data-animation="animation_blocks" data-bottom="@class:noactive" data--10-bottom="@class:active">  
                 <!-- item-->
-                
                 <div class="row wed_story_row">    
                   <h3 class="text-center">{{$text_question->question}}</h3>
                   
@@ -402,7 +401,7 @@
                     <span class="wed_port_title">{{$photo->question}}</span>
                     <span class="wed_port_icons">
                       <a href="#"><i class="ti ti-link"></i></a>
-                      <a href="http://placehold.it/1400x900" class="lightbox"><i class="ti ti-search"></i></a>
+                      <a href="{{Storage::url($guestAnswer->path)}}" class="lightbox"><i class="ti ti-search"></i></a>
                     </span>
                   </span>
                 </div>

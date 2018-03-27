@@ -23,6 +23,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/events', 'EventsController');
     Route::get('/events/config/{id}', 'EventsController@config')->name('event.config');
     Route::get('/events/theme/{id}/view', 'EventsController@theme')->name('event.theme');
+    Route::get('/events/dashboard/{id}', 'EventsController@dashboard')->name('events.dashboard');
     Route::patch('/events/config/sortPhotos', 'EventsController@sortPhotos')->name('event.configPhotos');
     Route::patch('/events/config/sortQuestions', 'EventsController@sortQuestions')->name('event.configQuestions');
     

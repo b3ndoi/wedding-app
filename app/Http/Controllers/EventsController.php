@@ -109,7 +109,13 @@ class EventsController extends Controller
         return view('events.show',compact('event', 'event_id'));
     }
 
-
+    public function dashboard($id)
+    {
+        $event = Event::find($id);
+        $event_id = $id;
+        return view('events.dashboard',compact('event', 'event_id'));
+    }
+    
     public function theme($id)
     {
         $event = Event::find($id);
