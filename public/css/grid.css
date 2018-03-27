@@ -54,3 +54,12 @@
       width: 100%;
       height: 200px;
   }
+
+  .text-black{
+    color: black;
+    text-decoration-line: none;
+  }
+  .text-black:hover{
+    color: black;
+    text-decoration-line: none;
+  }

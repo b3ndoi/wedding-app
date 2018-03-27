@@ -8,18 +8,20 @@
     <div class="row">
     @foreach($events as $event)
     <div class="card col-lg-4">
+    <a href="{{route('events.show',$event->id)}}">
     <img class="card-img-top" src="{{Storage::url($event->cover_image)}}" alt="Card image cap">
     <div class="card-body">
-        <h5 class="card-title">{{$event->name}}</h5>
+        <h5 class="card-title text-black">{{$event->name}}</h5>
         <p class="card-text">
-            <p><b> Mlada: </b>{{$event->name_of_bride}}</p>
-          <p><b>Mladoženja: </b>{{$event->name_of_groom}}</p>
+            <p class=" text-black"><b> Mlada: </b>{{$event->name_of_bride}}</p>
+          <p class=" text-black"><b>Mladoženja: </b>{{$event->name_of_groom}}</p>
         </p>
         
         <a href="{{route('events.show',$event->id)}}" class="btn btn-primary">Pogledaj</a>
         <a href="{{route('events.edit',$event->id)}}" class="btn btn-primary">Izmeni</a>
         <img src="https://api.qrserver.com/v1/create-qr-code/?data={{route('tests.create',$event->id)}}&amp;size=100x100" alt="" title="" />
     </div>
+    </a>
     </div>
     @endforeach
   </div>

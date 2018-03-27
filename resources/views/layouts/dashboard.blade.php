@@ -38,7 +38,7 @@
               <li class="nav-item">
                 <a class="nav-link" href="{{route('posts.index', $event_id)}}">
                   <span data-feather="file"></span>
-                  Posts
+                  Story
                 </a>
               </li>
               <li class="nav-item">
@@ -60,7 +60,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link"  href="{{route('tests.create',$event->id)}}">
                   <span data-feather="users"></span>
                   Testiraj ankete
                 </a>

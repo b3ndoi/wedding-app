@@ -14,7 +14,7 @@ class PostsController extends Controller
      */
     public function index($event_id)
     {
-        $posts = Post::where('event_id', $event_id)->orderBy('created_at', 'desc')->paginate(10);
+        $posts = Post::where('event_id', $event_id)->orderBy('date', 'desc')->paginate(10);
 
         return view('posts.index', compact('posts', 'event_id'));
     }

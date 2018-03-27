@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Question;
 use App\Answer;
+use App\Qtype;
 
 class QuestionsController extends Controller
 {
@@ -40,8 +41,14 @@ class QuestionsController extends Controller
      */
     public function store(Request $request)
     {
-        Question::create($request->all());
-        return redirect('events/'.$request->event_id);
+        $question = Question::create($request->all());
+        // http://wedding.loc/answers/create?question_id=5
+        
+        if($question->qtype->name == "Checkbox button" ||$question->qtype->name == "Radio button"){
+            return redirect('answers/create?question_id='.$question->id);
+        }else{
+            return redirect('events/'.$request->event_id);
+        }
     }
 
     /**
