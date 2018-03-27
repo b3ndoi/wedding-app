@@ -61,9 +61,10 @@ class QuestionsController extends Controller
     {
         $question = Question::findOrFail($id);
         $event_id = $question->event->id;
+        $event = $question->event;
         $guest_check_count = Answer::where('question_id', $id)->get();
         // return $guest_check_count;
-        return view('questions.show', compact('question', 'event_id'));
+        return view('questions.show', compact('question', 'event_id', 'event'));
     }
 
     /**

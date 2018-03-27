@@ -236,6 +236,7 @@
         @endif
         <!-- Section end -->
 
+      
 
       <!-- White border -->
       <div class="wed_white_inner_border">
@@ -262,7 +263,60 @@
       </div>      
       <!-- White border end-->
 
+      @if($guest_texts->count() > 0)
+        <section id="story" class="wed_section_outter">
+         
+          <div class="container">             
+            <div class="row">
 
+                <div class="col-sm-12  col-md-12 text-center">
+                    <div class="wed_topstory_titile wed_great_titles">
+                        <h2 class= "wed_without_after wed_image_bck" data-txt-color="#f50" >
+                           <img class="wed_small_img" src="{{asset('themes/images/1.png')}}" alt="">
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <!-- Row end -->
+           
+             
+              <!-- animation -->
+              @foreach($guest_texts as $text_question)
+            
+              <div data-animation="animation_blocks" data-bottom="@class:noactive" data--10-bottom="@class:active">  
+                <!-- item-->
+                
+                <div class="row wed_story_row">    
+                  <h3 class="text-center">{{$text_question->question}}</h3>
+                  
+                  @foreach($text_question->gusetsText as $text)
+                    <div class="col-md-6  hidden-sm hidden-xs text-center">   
+                    <div class="col-sm-12 col-md-12">
+                      <div class="wed_story_txt text-center">
+                        <h3>{{$text->guest->name}}</h3>
+                        <p>{{$text->answer}}</p> 
+
+                      </div>                           
+                    </div>  
+                    </div>
+                    @endforeach
+                      
+
+                    
+                    <div class="wed_vertical_line wed_line_top hidden-sm hidden-xs"></div>
+                  </div>
+                  <!-- END of STORY ROW-1 -->
+                  @endforeach
+                </div>
+                <!-- Animation End -->
+                
+              
+          </div>
+          <!-- END of CONTAINER -->
+          
+        </section> 
+        @endif
+        <!-- Section end -->
       <!-- section -->
       <section class="wed_section_outter">
         <div class="container text-center wed_great_titles">

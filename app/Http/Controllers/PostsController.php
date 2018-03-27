@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Event;
 use App\PostCategory;
 class PostsController extends Controller
 {
@@ -15,8 +16,8 @@ class PostsController extends Controller
     public function index($event_id)
     {
         $posts = Post::where('event_id', $event_id)->orderBy('date', 'desc')->paginate(10);
-
-        return view('posts.index', compact('posts', 'event_id'));
+        $event = Event::findOrFail($event_id);
+        return view('posts.index', compact('posts', 'event_id', 'event'));
     }
 
     /**

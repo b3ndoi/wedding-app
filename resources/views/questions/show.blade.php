@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading">{{$question->question}}</div>
+                <div class="panel-heading"><h3>{{$question->question}}</h3></div>
 
                 <div class="panel-body">
                     @if($question->qtype->name == 'Fotografija')
@@ -27,10 +27,10 @@
                     
                     </div>
                     @else
-                    <table class="table">
-                            <thead>
+                    <table class="table mt-5">
+                            <thead  class="thead-dark">
                                 <tr>
-                                    <th>Ispitanik</th>
+                                    <th>Ime Ispitanika</th>
                                     <th>Odgovor</th>
                                     <th></th>
                                     <th></th>
@@ -41,10 +41,10 @@
                                 @if($question->qtype->name == 'Teskt')
                                     @foreach($question->gusetsText as $guest)
                                         <tr>
-                                            <th class="col-lg-4">{{$guest->guest->name}}</th>
-                                            <th class="col-lg-4">{{$guest->answer}}</th>
-                                            <th class="col-lg-2"></th>
-                                            <th class="col-lg-2"></th>
+                                            <th >{{$guest->guest->name}}</th>
+                                            <th>{{$guest->answer}}</th>
+                                            <th ></th>
+                                            <th></th>
                                         </tr>
                                     @endforeach
                                 @endif

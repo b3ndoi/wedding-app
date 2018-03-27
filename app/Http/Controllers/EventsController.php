@@ -114,10 +114,11 @@ class EventsController extends Controller
     {
         $event = Event::find($id);
         $photos = Question::where('event_id', $id)->where('qtype_id', 4)->get();
+        $guest_texts = Question::where('event_id', $id)->where('qtype_id', 5)->get();
         $adresses = Adress::where('event_id', $id)->get();
         $posts_stories = Post::where('event_id', $id)->where('category_id', 1)->orderBy('date', 'desc')->get();
         $event_id = $id;
-        return view('tests.theme',compact('event', 'event_id', 'posts_stories', 'photos', 'adresses'));
+        return view('tests.theme',compact('event', 'event_id', 'posts_stories', 'photos', 'adresses', 'guest_texts'));
     }
 
     /**
